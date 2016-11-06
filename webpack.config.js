@@ -1,9 +1,7 @@
-var webpack = require('webpack');
+require('babel-polyfill');
 
 module.exports = {
-  entry: {
-    bundle: './src'
-  },
+  entry: ['babel-polyfill', './src/'],
   output: {
     path: 'build/',
     filename: 'app.js',

@@ -1,11 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { autoRehydrate } from 'redux-persist';
 import createLogger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 
 import Rehydration from '../services/Rehydration';
 import rootReducer from '../reducers/';
+import sagas from '../sagas/';
 
 let middleware = [];
+// const sagaMiddleware = createSagaMiddleware();
+// middleware.push(sagaMiddleware);
 
 export default () => {
   let store = {};
@@ -24,10 +28,8 @@ export default () => {
     enhancers
   );
 
-  // configure persistStore and check reducer version number
   Rehydration.updateReducers(store);
 
-  // run sagas
   // sagaMiddleware.run(sagas);
 
   return store;
