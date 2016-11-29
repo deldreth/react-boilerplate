@@ -5,7 +5,7 @@ import Actions from '../actions/Creators';
 
 export function * watchAppLoaded () {
   while (true) {
-    yield take(Types.APP_LOADED);
+    yield take(Types.LOADED);
   }
 }
 

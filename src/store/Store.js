@@ -8,8 +8,8 @@ import rootReducer from '../reducers/';
 import sagas from '../sagas/';
 
 let middleware = [];
-// const sagaMiddleware = createSagaMiddleware();
-// middleware.push(sagaMiddleware);
+const sagaMiddleware = createSagaMiddleware();
+middleware.push(sagaMiddleware);
 
 export default () => {
   let store = {};
@@ -30,7 +30,7 @@ export default () => {
 
   Rehydration.updateReducers(store);
 
-  // sagaMiddleware.run(sagas);
+  sagaMiddleware.run(sagas);
 
   return store;
 };
