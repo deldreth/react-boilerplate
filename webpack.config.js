@@ -1,4 +1,4 @@
-require('babel-polyfill');
+const webpack = require('webpack');
 
 module.exports = {
   entry: ['babel-polyfill', './src/'],
@@ -19,9 +19,14 @@ module.exports = {
       }
     ]
   },
-  // plugins: [
-  //   new webpack.optimize.UglifyJsPlugin({
-  //     compress: { warnings: false }
-  //   })
-  // ]
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ]
 };

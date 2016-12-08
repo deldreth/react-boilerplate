@@ -1,7 +1,10 @@
-import { take, fork } from 'redux-saga/effects';
+import { take, fork, call } from 'redux-saga/effects';
 
 import Types from '../actions/Types';
 import Actions from '../actions/Creators';
+
+import Api from '../services/Api';
+const api = Api.create();
 
 export function * watchAppLoaded () {
   while (true) {
