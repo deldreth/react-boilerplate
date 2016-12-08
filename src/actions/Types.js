@@ -1,5 +1,7 @@
-import AppTypes from './AppTypes';
+import AppTypes from './appTypes';
+import PostTypes from './postTypes';
 
 export default {
-  ...AppTypes
+  ...AppTypes,
+  ...PostTypes
 };

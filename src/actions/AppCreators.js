@@ -1,4 +1,4 @@
-import Types from './AppTypes';
+import Types from './appTypes';
 
 const loaded = (message) => ({
   type: Types.LOADED

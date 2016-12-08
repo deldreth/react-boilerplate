@@ -4,17 +4,16 @@ import { createReducer } from 'reduxsauce';
 import Types from '../actions/types';
 
 export const INITIAL_STATE = Immutable({
-  loaded: false,
+  posts: []
 });
 
-const loaded = (state, action) => {
-  return state.merge({
-    loaded: true
+const receivePosts = (state = INITIAL_STATE, action) =>
+  state.merge({
+    posts: action.posts
   });
-}
 
 const ACTION_HANDLERS = {
-  [Types.LOADED]: loaded,
+  [Types.RECEIVE_POSTS]: receivePosts
 };
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS);

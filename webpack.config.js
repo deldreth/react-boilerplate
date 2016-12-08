@@ -7,6 +7,9 @@ module.exports = {
     filename: 'app.js',
     publicPath: 'build/'
   },
+  devServer: {
+    inline: true
+  },
   module: {
     loaders: [
       {
