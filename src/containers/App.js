@@ -1,19 +1,24 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import Posts from './posts';
+
 class App extends React.Component {
   static propTypes = {
     loaded: PropTypes.bool
   };
 
   render () {
-    let message = 'Loading';
+    const { loaded } = this.props;
 
-    if (this.props.loaded) {
-      message = 'It works.';
+    if (!loaded) {
+      return (
+        <div>Loading...</div>
+      );
     }
+
     return (
-      <div>{message}</div>
+      <Posts />
     );
   }
 }
