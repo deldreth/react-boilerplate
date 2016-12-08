@@ -2,7 +2,7 @@ import apisauce from 'apisauce';
 
 import Settings from '../config/Settings';
 
-const create = (baseURL = Settings.api_url) => {
+export default ((baseURL = Settings.api_url) => {
   const api = apisauce.create({
     baseURL,
     headers: {
@@ -18,8 +18,4 @@ const create = (baseURL = Settings.api_url) => {
   return {
     getPosts
   };
-};
-
-export default {
-  create
-};
+})();

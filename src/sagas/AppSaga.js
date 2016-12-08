@@ -4,11 +4,15 @@ import Types from '../actions/Types';
 import Actions from '../actions/Creators';
 
 import Api from '../services/Api';
-const api = Api.create();
 
 export function * watchAppLoaded () {
   while (true) {
     yield take(Types.LOADED);
+
+    const response = yield call(Api.getPosts);
+    if (response.ok) {
+      // do something with response.data
+    }
   }
 }
 
