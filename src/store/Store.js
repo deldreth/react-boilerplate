@@ -2,14 +2,14 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { autoRehydrate } from 'redux-persist';
 import createLogger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import { effectsMiddleware } from 'redux-effex';
 
 import Rehydration from '../services/Rehydration';
 import rootReducer from '../reducers/';
-import sagas from '../sagas/';
+import effects from '../effects/';
 
 let middleware = [];
-const sagaMiddleware = createSagaMiddleware();
-middleware.push(sagaMiddleware);
+middleware.push(effectsMiddleware(effects));
 
 export default () => {
   let store = {};
@@ -29,8 +29,6 @@ export default () => {
   );
 
   Rehydration.updateReducers(store);
-
-  sagaMiddleware.run(sagas);
 
   return store;
 };

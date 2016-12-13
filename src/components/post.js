@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 export default class Post extends React.Component {
   static propTypes = {
-    post: PropTypes.bool
+    post: PropTypes.object
   };
 
   render () {
