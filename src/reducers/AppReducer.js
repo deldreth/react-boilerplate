@@ -1,20 +1,21 @@
-import Immutable from 'seamless-immutable';
+// @flow
 import { createReducer } from 'reduxsauce';
 
-import Types from '../actions/types';
+type State = {
+  loaded: bool
+};
 
-export const INITIAL_STATE = Immutable({
+import { Types } from '../actions';
+
+export const INITIAL_STATE = {
   loaded: false,
-});
-
-const loaded = (state, action) => {
-  return state.merge({
-    loaded: true
-  });
-}
+};
 
 const ACTION_HANDLERS = {
-  [Types.LOADED]: loaded,
+  [ Types.LOADED ]: ( state: State = INITIAL_STATE, action: Object ): Object =>
+    Object.assign( {}, state, {
+      loaded: true
+    } )
 };
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS);

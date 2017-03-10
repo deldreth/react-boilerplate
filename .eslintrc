@@ -7,9 +7,13 @@
     ],
     "plugins": [
         "react",
+        "flowtype"
     ],
     "ecmaFeatures": {
         "browser": true,
         "jsx": true
+    },
+    "globals": {
+        "Generator": true
     }
 }

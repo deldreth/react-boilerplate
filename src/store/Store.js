@@ -1,3 +1,4 @@
+// @flow
 import { createStore, applyMiddleware, compose } from 'redux';
 import { autoRehydrate } from 'redux-persist';
 import createLogger from 'redux-logger';
@@ -8,11 +9,11 @@ import rootReducer from '../reducers/';
 import sagas from '../sagas/';
 
 let middleware = [];
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware: Object = createSagaMiddleware();
 middleware.push(sagaMiddleware);
 
-export default () => {
-  let store = {};
+export default (): Object => {
+  let store: Object = {};
 
   middleware.push(createLogger());
 
@@ -21,7 +22,7 @@ export default () => {
     autoRehydrate()
   ];
 
-  const enhancers = compose(...enhance);
+  const enhancers: Object = compose(...enhance);
 
   store = createStore(
     rootReducer,

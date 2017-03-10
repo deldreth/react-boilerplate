@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
 
 module.exports = {
   entry: ['babel-polyfill', './src/'],
@@ -23,13 +24,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    })
+    new FlowStatusWebpackPlugin()
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: { warnings: false }
+    // }),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     'NODE_ENV': JSON.stringify('production')
+    //   }
+    // })
   ]
 };

@@ -1,14 +1,16 @@
-/* globals localStorage */
-
+// @flow
 import ReduxPersist from '../config/Persist';
 import { persistStore } from 'redux-persist';
 
-const updateReducers = (store) => {
-  const reducerVersion = ReduxPersist.reducerVersion;
-  const config = ReduxPersist.storeConfig;
-  const startup = () => store.dispatch({ type: 'LOADED' });
+declare var localStorage: Object;
 
-  let localVersion = localStorage.getItem('reducerVersion');
+const updateReducers = ( store: Object ): void => {
+  const reducerVersion: string = ReduxPersist.reducerVersion;
+  const config: Object = ReduxPersist.storeConfig;
+  const startup = (): Object =>
+    store.dispatch({ type: 'LOADED' });
+
+  let localVersion: string = localStorage.getItem('reducerVersion');
   if (localVersion !== reducerVersion) {
     // Purge store and refresh
     persistStore(store, config, startup).purge();
@@ -18,4 +20,4 @@ const updateReducers = (store) => {
   }
 };
 
-export default {updateReducers};
+export default { updateReducers };

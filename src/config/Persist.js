@@ -1,6 +1,4 @@
-/* globals localStorage */
-
-import immutablePersistenceTransform from '../store/ImmutablePersistenceTransform';
+// @flow
 import { persistentStoreBlacklist } from '../reducers/';
 
 const REDUX_PERSIST = {
@@ -8,7 +6,7 @@ const REDUX_PERSIST = {
   reducerVersion: '1',
   storeConfig: {
     blacklist: persistentStoreBlacklist,
-    transforms: [immutablePersistenceTransform]
+    transforms: []
   }
 };
 

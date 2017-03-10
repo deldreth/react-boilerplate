@@ -1,9 +1,15 @@
+// @flow
 import apisauce from 'apisauce';
 
 import Settings from '../config/Settings';
 
-export default ((baseURL = Settings.api_url) => {
-  const api = apisauce.create({
+export type Response = {
+  ok: boolean,
+  data: Object
+};
+
+export default ( ( baseURL: string = Settings.api_url ): Object => {
+  const api: Object = apisauce.create({
     baseURL,
     headers: {
       'Accept': 'application/json',
@@ -12,10 +18,10 @@ export default ((baseURL = Settings.api_url) => {
     timeout: 15000
   });
 
-  const getPosts = () =>
+  const getPosts: Function = () =>
     api.get('/posts');
 
   return {
     getPosts
   };
-})();
+} )();

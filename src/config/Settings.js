@@ -1,3 +1,4 @@
+// @flow
 // See https://jsonplaceholder.typicode.com/
 const DEVELOPMENT = {
   api_url: 'https://jsonplaceholder.typicode.com'

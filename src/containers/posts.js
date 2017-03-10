@@ -1,42 +1,48 @@
-import React, { PropTypes } from 'react';
+// @flow
+import React from 'react';
 import { connect } from 'react-redux';
 
 import Post from '../components/post';
+import type { PostType } from '../components/post';
+
+type Props = {
+  posts: Array<PostType>
+};
 
 class Posts extends React.Component {
-  static propTypes = {
-    posts: PropTypes.array
-  };
+  props: Props;
 
-  render () {
-    const { posts } = this.props;
-
-    if (posts.length === 0) {
-      return null;
+  renderPosts () {
+    if ( this.props.posts.length > 0 ) {
+      return (
+        <div id='posts'>
+        {
+          this.props.posts.map( ( post: PostType ) => (
+            <Post post={post}/>
+          ) )
+        }
+        </div>
+      );
     }
 
-    const renderPosts = posts.map(post => (
-      <Post post={post}/>
-    ));
+    return null;
+  }
 
-    return (
-      <div>
-        {renderPosts}
-      </div>
-    );
+  render () {
+    return this.renderPosts();
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ( state: Object ) => {
   return {
     posts: state.post.posts
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = ( dispatch: Function ) => {
   return {
 
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect( mapStateToProps, mapDispatchToProps )( Posts );

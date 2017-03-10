@@ -1,17 +1,24 @@
-import React, { PropTypes } from 'react';
+// @flow
+import React from 'react';
 import { connect } from 'react-redux';
 
 import Posts from './posts';
 
+type Props = {
+  loaded: boolean
+};
+
 class App extends React.Component {
-  static propTypes = {
-    loaded: PropTypes.bool
-  };
+  props: Props;
+
+  constructor ( props: Props ) {
+    super( props );
+  }
 
   render () {
     const { loaded } = this.props;
 
-    if (!loaded) {
+    if ( !loaded ) {
       return (
         <div>Loading...</div>
       );
@@ -23,7 +30,7 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ( state ) => {
   return {
     loaded: state.app.loaded
   };

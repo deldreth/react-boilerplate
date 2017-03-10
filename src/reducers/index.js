@@ -1,15 +1,16 @@
+// @flow
 import { combineReducers } from 'redux';
 
 import AppReducer from './appReducer';
 import PostReducer from './postReducer';
 
-const allReducers = combineReducers({
+const allReducers: Function = combineReducers({
   app: AppReducer,
   post: PostReducer
 });
 
-export default (state, action) => {
-  return allReducers(state, action);
+export default ( state: Object, action: Object ) => {
+  return allReducers( state, action );
 };
 
 // Specify any reducer keys that shouldn't persist
